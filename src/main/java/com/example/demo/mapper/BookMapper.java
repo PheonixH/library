@@ -39,7 +39,7 @@ public interface BookMapper {
     @Insert("INSERT INTO BOOK(ID, SORT, NAME, AUTHOR, STATUS) VALUES(#{id}, #{sort}, #{name}, #{author}, #{status})")
     void insert(Book book);
 
-    @Update("INSERT INTO BOOK(ID, SORT, NAME, AUTHOR, STATUS) VALUES(#{id}, #{sort}, #{name}, #{author}, #{status})")
+    @Update("UPDATE BOOK SET SORT = #{sort} , NAME = #{name}, AUTHOR = #{author}, STATUS = #{status} WHERE ID = #{id}")
     void update(Book book);
 
     @Delete("DELETE FROM BOOK WHERE ID = #{id}")

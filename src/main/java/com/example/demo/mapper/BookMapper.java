@@ -36,6 +36,12 @@ public interface BookMapper {
     })
     Book getById(long id);
 
-    @Insert("INSERT INTO BOOK(ID, SORT, NAME, AUTHOR, STATUS) VALUES(#{},#{},#{},#{})")
+    @Insert("INSERT INTO BOOK(ID, SORT, NAME, AUTHOR, STATUS) VALUES(#{id}, #{sort}, #{name}, #{author}, #{status})")
     void insert(Book book);
+
+    @Update("INSERT INTO BOOK(ID, SORT, NAME, AUTHOR, STATUS) VALUES(#{id}, #{sort}, #{name}, #{author}, #{status})")
+    void update(Book book);
+
+    @Delete("DELETE FROM BOOK WHERE ID = #{id}")
+    void delete(long Id);
 }

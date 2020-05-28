@@ -27,33 +27,36 @@ class BookMapperTest {
         type.setAuthor("A");
         type.setStatus(1);
         bookMapper.insert(type);
-//        testQuery();
+        testQuery();
     }
 
-    //    @Test
-//    public void testUpdate() {
-//        System.out.println("----------测试更新------");
-//        BlogType type = blogTypeMapper.getOne("455550e8ba444f8aabdd696a0976a6bb");
-//        type.setTypeTxt("学习Spring Boot Mybatis");
-//        blogTypeMapper.update(type);
-//
-//        type = blogTypeMapper.getOne("455550e8ba444f8aabdd696a0976a6bb");
-//
-//        System.out.println(type.getBtId() + "------>" + type.getTypeTxt());
-//    }
-//
+    @Test
+    public void testUpdate() {
+        System.out.println("----------测试更新------");
+        Book book = bookMapper.getById(5001);
+        book.setName("学习Spring Boot Mybatis");
+        bookMapper.update(book);
+
+        book = bookMapper.getById(5001);
+
+        System.out.println("id:" + book.getId() + "-sort id:" + book.getSort() + "-name:" + book.getName()
+                + "-author:" + book.getAuthor() + "-status:" + book.getStatus());
+    }
+
     @Test
     public void testQuery() {
-        Book book = bookMapper.getById(5001);
+        List<Book> list = bookMapper.getAll();
         System.out.println("----------查询数据------");
-        System.out.println(book.getId() + "------>" + book.getName() + "------>" + book.getStatus());
-
+        list.stream().forEach(item -> {
+            System.out.println("id:" + item.getId() + "-sort id:" + item.getSort() + "-name:" + item.getName()
+                    + "-author:" + item.getAuthor() + "-status:" + item.getStatus());
+        });
     }
-//
-//    @Test
-//    public void testDelete() {
-//        System.out.println("----------测试删除------");
-//        blogTypeMapper.delete("455550e8ba444f8aabdd696a0976a6bb");
-//        testQuery();
-//    }
+
+    @Test
+    public void testDelete() {
+        System.out.println("----------测试删除------");
+        bookMapper.delete(5001);
+        testQuery();
+    }
 }

@@ -1,0 +1,19 @@
+mybatis:
+  type-aliases-package: com.example.demo.domain
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url:  jdbc:mysql://localhost:3306/library?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
+    max-idle: 10
+    max-wait: 1000
+    tomcat:
+      max-wait: 10000
+      max-active: 50
+      test-on-borrow: true
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60001
+
+

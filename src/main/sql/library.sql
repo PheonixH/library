@@ -70,3 +70,6 @@ INSERT INTO `READER`
 VALUES (0001, 'TomaNut', 3),
        (0002, 'LovMo', 2),
        (0003, 'Yanny', 1);
+
+INSERT INTO `ADMIN`
+VALUES (1, 'admin', 'a123');

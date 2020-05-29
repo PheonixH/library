@@ -1,7 +1,7 @@
 package com.example.demo.mapper;
 
-import com.example.demo.domain.Book;
-import com.example.demo.domain.Books;
+import com.example.demo.pojo.entity.Book;
+import com.example.demo.pojo.entity.Books;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 

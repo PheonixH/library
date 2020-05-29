@@ -17,15 +17,20 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Slf4j
 @RestController
-@RequestMapping(value = "/manager")
+@RequestMapping(value = "/admin")
 public class LibraryManagerController {
 
     @Autowired
     BookService bookService;
 
     @RequestMapping("/hello")
-    public String welcome() {
+    public String oldWelcome() {
         return "welcome to the library system!";
+    }
+
+    @RequestMapping("/welcome")
+    public String newWelcome() {
+        return "welcome to the new library system!";
     }
 
     @RequestMapping("/showBooks")

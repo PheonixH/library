@@ -12,6 +12,9 @@ public class Grade implements Serializable {
     this.max = max;
   }
 
+  public Grade() {
+  }
+
   public long getId() {
     return id;
   }

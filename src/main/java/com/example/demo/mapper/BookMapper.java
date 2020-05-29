@@ -6,16 +6,23 @@ import org.apache.ibatis.type.JdbcType;
 
 import java.util.List;
 
-/*
+/**
+ * The interface Book mapper.
+ *
  * @program: library
  * @className: BookMapper
  * @description: book mapper
  * @author: lov.moran
- * @date 2020-05-28 00:58
- * */
+ * @date 2020 -05-28 00:58
+ */
 @Mapper
 public interface BookMapper {
 
+    /**
+     * Gets all.
+     *
+     * @return the all
+     */
     @Select("SELECT * FROM BOOK")
     @Results({
             @Result(column = "ID", property = "id", jdbcType = JdbcType.INTEGER, id = true),
@@ -26,6 +33,12 @@ public interface BookMapper {
     })
     List<Book> getAll();
 
+    /**
+     * Gets by id.
+     *
+     * @param id the id
+     * @return the by id
+     */
     @Select("SELECT * FROM BOOK WHERE ID = #{id}")
     @Results({
             @Result(column = "ID", property = "id", jdbcType = JdbcType.INTEGER, id = true),
@@ -36,12 +49,27 @@ public interface BookMapper {
     })
     Book getById(long id);
 
+    /**
+     * Insert.
+     *
+     * @param book the book
+     */
     @Insert("INSERT INTO BOOK(ID, SORT, NAME, AUTHOR, STATUS) VALUES(#{id}, #{sort}, #{name}, #{author}, #{status})")
     void insert(Book book);
 
+    /**
+     * Update.
+     *
+     * @param book the book
+     */
     @Update("UPDATE BOOK SET SORT = #{sort} , NAME = #{name}, AUTHOR = #{author}, STATUS = #{status} WHERE ID = #{id}")
     void update(Book book);
 
+    /**
+     * Delete.
+     *
+     * @param Id the id
+     */
     @Delete("DELETE FROM BOOK WHERE ID = #{id}")
     void delete(long Id);
 }

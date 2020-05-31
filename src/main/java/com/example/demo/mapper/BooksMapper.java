@@ -49,8 +49,7 @@ public interface BooksMapper {
      *
      * @param books the books
      */
-    @Insert("INSERT INTO BOOKS(SORT, NAME, AUTHOR, SUM, EXISTS) " +
-            "VALUES (#{sort}, #{name}, #{author}, #{status}, #{exists})")
+    @Insert("INSERT INTO BOOKS VALUES (#{sort}, #{name}, #{author}, #{sum}, #{exists})")
     void insert(Books books);
 
     /**

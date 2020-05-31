@@ -3,9 +3,11 @@ package com.example.demo.controller;
 
 import com.example.demo.pojo.BaseResponse;
 import com.example.demo.pojo.entity.Admin;
+import com.example.demo.pojo.request.AddBook;
 import com.example.demo.service.BookService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,8 +42,8 @@ public class LibraryManagerController {
     }
 
     @RequestMapping("/addBooks")
-    public BaseResponse addBooks(Admin admin) {
-        return bookService();
+    public BaseResponse addBooks(@RequestBody AddBook addBook) {
+        return bookService.insertBook(addBook);
     }
 
 

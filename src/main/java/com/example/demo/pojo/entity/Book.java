@@ -5,68 +5,82 @@ import java.io.Serializable;
 
 public class Book implements Serializable {
 
-  private static final long serialVersionUID = 8655851615465363473L;
+    private static final long serialVersionUID = 8655851615465363473L;
 
-  private long id;
-  private String sort;
-  private String name;
-  private String author;
-  private long status;
+    private long id;
+    private String sort;
+    private String name;
+    private String author;
+    private long status;
 
-  public Book() {
-  }
+    public Book() {
+    }
 
-  public Book(long id, String sort, String name, String author, long status) {
+    public Book(String sort, String name, String author) {
+        this.sort = sort;
+        this.name = name;
+        this.author = author;
+        this.status = 1;
+    }
 
-    this.id = id;
-    this.sort = sort;
-    this.name = name;
-    this.author = author;
-    this.status = status;
-  }
+    public Book(String sort, String name, String author, long status) {
+        this.sort = sort;
+        this.name = name;
+        this.author = author;
+        this.status = status;
+    }
 
-  public long getId() {
-    return id;
-  }
+    public Book(long id, String sort, String name, String author, long status) {
 
-  public void setId(long id) {
-    this.id = id;
-  }
+        this.id = id;
+        this.sort = sort;
+        this.name = name;
+        this.author = author;
+        this.status = status;
+    }
 
+    public long getId() {
+        return id;
+    }
 
-  public String getSort() {
-    return sort;
-  }
-
-  public void setSort(String sort) {
-    this.sort = sort;
-  }
-
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
+    public void setId(long id) {
+        this.id = id;
+    }
 
 
-  public String getAuthor() {
-    return author;
-  }
+    public String getSort() {
+        return sort;
+    }
 
-  public void setAuthor(String author) {
-    this.author = author;
-  }
+    public void setSort(String sort) {
+        this.sort = sort;
+    }
 
 
-  public long getStatus() {
-    return status;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public void setStatus(long status) {
-    this.status = status;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+
+    public long getStatus() {
+        return status;
+    }
+
+    public void setStatus(long status) {
+        this.status = status;
+    }
 
 }

@@ -1,10 +1,12 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.mapper.BooksMapper;
 import com.example.demo.pojo.BaseResponse;
 import com.example.demo.pojo.StatusCodeDesc;
-import com.example.demo.pojo.entity.Admin;
 import com.example.demo.pojo.entity.Book;
 import com.example.demo.mapper.BookMapper;
+import com.example.demo.pojo.entity.Books;
+import com.example.demo.pojo.request.AddBook;
 import com.example.demo.service.BookService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private BookMapper bookMapper;
 
+    @Autowired
+    private BooksMapper booksMapper;
+
     @Override
     public BaseResponse queryAllBook() {
         BaseResponse response = null;
@@ -35,9 +40,11 @@ public class BookServiceImpl implements BookService {
             List<Book> bookList = bookMapper.getAll();
             Map paramMap = new HashMap();
             paramMap.put("BookList", bookList);
+            paramMap.put("TotalNumber", bookList.size());
             response = new BaseResponse(StatusCodeDesc.SUCCESS.getCode(),
                     StatusCodeDesc.SUCCESS.getDesc(), paramMap);
         } catch (Exception e) {
+            e.printStackTrace();
             return new BaseResponse(StatusCodeDesc.INTERNAL_SERVER_ERROR.getCode(),
                     StatusCodeDesc.INTERNAL_SERVER_ERROR.getDesc());
         }
@@ -45,15 +52,26 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BaseResponse insertBook(Book book) {
+    public BaseResponse insertBook(AddBook addBook) {
         BaseResponse response = null;
         try {
-            long bookId = bookMapper.getBookId(book);
-            Map paramMap = new HashMap();
-            paramMap.put("BookList", bookList);
+            Books existBooks = booksMapper.getBySort(addBook.getBook().getSort());
+            if (existBooks == null) {
+                Books newBooks = new Books(addBook.getBook().getSort(), addBook.getBook().getName(),
+                        addBook.getBook().getAuthor(), addBook.getNumber(), addBook.getNumber());
+                booksMapper.insert(newBooks);
+            } else {
+                existBooks.setSum(existBooks.getSum() + addBook.getNumber());
+                existBooks.setExists(existBooks.getExists() + addBook.getNumber());
+                booksMapper.update(existBooks);
+            }
+            for (int i = 0; i < addBook.getNumber(); i++) {
+                bookMapper.insert(addBook.getBook());
+            }
             response = new BaseResponse(StatusCodeDesc.SUCCESS.getCode(),
-                    StatusCodeDesc.SUCCESS.getDesc(), paramMap);
+                    StatusCodeDesc.SUCCESS.getDesc());
         } catch (Exception e) {
+            e.printStackTrace();
             return new BaseResponse(StatusCodeDesc.INTERNAL_SERVER_ERROR.getCode(),
                     StatusCodeDesc.INTERNAL_SERVER_ERROR.getDesc());
         }

@@ -50,6 +50,22 @@ public interface BookMapper {
     Book getById(long id);
 
     /**
+     * Gets by id.
+     *
+     * @param id the id
+     * @return the by id
+     */
+    @Select("SELECT ID FROM BOOK WHERE NAME = #{name} AND SORT = #{sort} AND AUTHOR = #{author}")
+    @Results({
+            @Result(column = "ID", property = "id", jdbcType = JdbcType.INTEGER, id = true),
+            @Result(column = "SORT", property = "sort", jdbcType = JdbcType.INTEGER),
+            @Result(column = "NAME", property = "name", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "AUTHOR", property = "author", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "STATUS", property = "status", jdbcType = JdbcType.INTEGER)
+    })
+    Long getBookId(Book book);
+
+    /**
      * Insert.
      *
      * @param book the book

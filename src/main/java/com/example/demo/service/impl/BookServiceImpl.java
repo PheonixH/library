@@ -2,6 +2,7 @@ package com.example.demo.service.impl;
 
 import com.example.demo.pojo.BaseResponse;
 import com.example.demo.pojo.StatusCodeDesc;
+import com.example.demo.pojo.entity.Admin;
 import com.example.demo.pojo.entity.Book;
 import com.example.demo.mapper.BookMapper;
 import com.example.demo.service.BookService;
@@ -32,6 +33,22 @@ public class BookServiceImpl implements BookService {
         BaseResponse response = null;
         try {
             List<Book> bookList = bookMapper.getAll();
+            Map paramMap = new HashMap();
+            paramMap.put("BookList", bookList);
+            response = new BaseResponse(StatusCodeDesc.SUCCESS.getCode(),
+                    StatusCodeDesc.SUCCESS.getDesc(), paramMap);
+        } catch (Exception e) {
+            return new BaseResponse(StatusCodeDesc.INTERNAL_SERVER_ERROR.getCode(),
+                    StatusCodeDesc.INTERNAL_SERVER_ERROR.getDesc());
+        }
+        return response;
+    }
+
+    @Override
+    public BaseResponse insertBook(Book book) {
+        BaseResponse response = null;
+        try {
+            long bookId = bookMapper.getBookId(book);
             Map paramMap = new HashMap();
             paramMap.put("BookList", bookList);
             response = new BaseResponse(StatusCodeDesc.SUCCESS.getCode(),

@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 
 import com.example.demo.pojo.BaseResponse;
+import com.example.demo.pojo.entity.Admin;
 import com.example.demo.service.BookService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,11 @@ public class LibraryManagerController {
     @RequestMapping("/showBooks")
     public BaseResponse showBooks() {
         return bookService.queryAllBook();
+    }
+
+    @RequestMapping("/addBooks")
+    public BaseResponse addBooks(Admin admin) {
+        return bookService();
     }
 
 

@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.pojo.BaseResponse;
+import com.example.demo.pojo.entity.Admin;
 
 /**
  * @program: library
@@ -13,4 +14,6 @@ import com.example.demo.pojo.BaseResponse;
 public interface BookService {
 
     BaseResponse queryAllBook();
+
+    BaseResponse insertBook(Admin admin);
 }

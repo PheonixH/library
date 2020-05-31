@@ -1,6 +1,9 @@
 mybatis:
   type-aliases-package: com.example.demo.domain
 
+server:
+  port: 8088
+
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -15,5 +18,14 @@ spring:
       test-on-borrow: true
       test-while-idle: true
       time-between-eviction-runs-millis: 60001
+  resources:
+    static-locations: classpath:/templates  #访问静态页面
+#  thymeleaf:
+#    prefix: classpath:/templates/
+#    suffix: .html
+#    cache: true
+#    check-template: true
+#    check-template-location: true
+#    enabled: true
 
 

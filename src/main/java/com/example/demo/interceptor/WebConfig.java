@@ -17,9 +17,13 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 //        拦截器用于拦截所有请求
-        registry.addInterceptor(new LogInterceptor());
+//        registry.addInterceptor(new LogInterceptor());
+//
+        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/admin/*");
+//
 //        拦截链接 “/admin/hello”，它将重定向到新的 “/admin/welcome”
-        registry.addInterceptor(new OldLoginInterceptor()).addPathPatterns("/admin/hello");
+//        registry.addInterceptor(new OldLoginInterceptor()).addPathPatterns("/admin/hello");
+
 //        拦截链接“/admin/*”，除了链接 “/admin/hello”
 //        registry.addInterceptor(new LogInterceptor()).addPathPatterns("/admin/*").excludePathPatterns("/admin/hello");
     }

@@ -25,14 +25,11 @@ public interface AdminMapper {
     List<Admin> getAll();
 
     /**
-     * Gets all.
+     * Gets one.
      *
      * @param id the id
      * @return the all
      */
-    @Select("SELECT * FROM ADMIN WHERE ID = #{id}")
-    Admin getById(long id);
-
     @Select("SELECT * FROM ADMIN WHERE NAME = #{name}")
     Admin getByName(String name);
 
@@ -41,7 +38,7 @@ public interface AdminMapper {
      *
      * @param admin the admin
      */
-    @Insert("INSERT INTO ADMIN(ID, NAME, PASSWORD) VALUES(#{id}, #{name}, #{password})")
+    @Insert("INSERT INTO ADMIN(NAME, PASSWORD) VALUES(#{name}, #{password})")
     void insert(Admin admin);
 
     /**
@@ -55,10 +52,10 @@ public interface AdminMapper {
     /**
      * Delete.
      *
-     * @param Id the id
+     * @param name the name
      */
-    @Delete("DELETE FROM ADMIN WHERE ID = #{id}")
-    void delete(long Id);
+    @Delete("DELETE FROM ADMIN WHERE NAME = #{name}")
+    void delete(String name);
 
     /**
      * 登录

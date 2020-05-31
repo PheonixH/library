@@ -63,6 +63,6 @@ public interface AdminMapper {
      * @param admin the admin
      * @return
      */
-    @Select("SELECT A.ID FROM ADMIN A WHERE A.NAME = #{name} AND A.PASSWORD = #{password}")
-    Long login(Admin admin);
+    @Select("SELECT A.NAME FROM ADMIN A WHERE A.NAME = #{name} AND A.PASSWORD = #{password}")
+    String login(Admin admin);
 }

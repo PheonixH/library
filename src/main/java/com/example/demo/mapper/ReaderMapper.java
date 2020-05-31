@@ -41,7 +41,7 @@ public interface ReaderMapper {
      *
      * @param reader the reader
      */
-    @Insert("INSERT INTO READER(ID, NAME, GRADE) VALUES(#{id}, #{name}, #{grade})")
+    @Insert("INSERT INTO READER(ID, NAME, GRADE, PASSWORD) VALUES(#{id}, #{name}, #{grade}, #{password})")
     void insert(Reader reader);
 
     /**
@@ -49,7 +49,7 @@ public interface ReaderMapper {
      *
      * @param reader the reader
      */
-    @Update("UPDATE READER SET NAME = #{name}, GRADE = #{grade} WHERE ID = #{id}")
+    @Update("UPDATE READER SET NAME = #{name}, GRADE = #{grade}, PASSWORD = #{password} WHERE ID = #{id}")
     void update(Reader reader);
 
     /**

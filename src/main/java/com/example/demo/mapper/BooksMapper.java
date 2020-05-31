@@ -26,31 +26,31 @@ public interface BooksMapper {
      */
     @Select("SELECT * FROM BOOKS")
     @Results({
-            @Result(column = "ID", property = "id", jdbcType = JdbcType.INTEGER, id = true),
             @Result(column = "SORT", property = "sort", jdbcType = JdbcType.INTEGER),
             @Result(column = "NAME", property = "name", jdbcType = JdbcType.VARCHAR),
             @Result(column = "AUTHOR", property = "author", jdbcType = JdbcType.VARCHAR),
             @Result(column = "SUM", property = "sum", jdbcType = JdbcType.INTEGER),
             @Result(column = "EXISTS", property = "exists", jdbcType = JdbcType.INTEGER)
     })
-    List<Book> getAll();
+    List<Books> getAll();
+
 
     /**
      * Get one books which is selected by id.
      *
-     * @param id the id
+     * @param sort the sort
      * @return the books selected by id
      */
-    @Select("SELECT * FROM BOOKS WHERE ID = #{id}")
-    Book getById(long id);
+    @Select("SELECT * FROM BOOKS WHERE SORT = #{sort}")
+    Books getBySort(String sort);
 
     /**
      * Insert.
      *
      * @param books the books
      */
-    @Insert("INSERT INTO BOOKS(ID, SORT, NAME, AUTHOR, SUM, EXISTS) " +
-            "VALUES (#{id}, #{sort}, #{name}, #{author}, #{status}, #{exists})")
+    @Insert("INSERT INTO BOOKS(SORT, NAME, AUTHOR, SUM, EXISTS) " +
+            "VALUES (#{sort}, #{name}, #{author}, #{status}, #{exists})")
     void insert(Books books);
 
     /**
@@ -58,7 +58,7 @@ public interface BooksMapper {
      *
      * @param books the books
      */
-    @Update("UPDATE BOOKS SET SORT = #{sort} , NAME = #{name}, AUTHOR = #{author}, STATUS = #{status} WHERE ID = #{id}")
+    @Update("UPDATE BOOKS SET NAME = #{name}, AUTHOR = #{author}, STATUS = #{status} WHERE SORT = #{sort}")
     void update(Books books);
 
     /**
@@ -66,6 +66,6 @@ public interface BooksMapper {
      *
      * @param Id the id
      */
-    @Delete("DELETE FROM BOOKS WHERE ID = #{id}")
+    @Delete("DELETE FROM BOOKS WHERE SORT = #{sort}")
     void delete(long Id);
 }

@@ -4,20 +4,21 @@ import java.io.Serializable;
 
 public class Books implements Serializable {
 
-    private long id;
     private String sort;
     private String name;
     private String author;
     private long sum;
     private long exists;
 
-
-    public long getId() {
-        return id;
+    public Books(String sort, String name, String author, long sum, long exists) {
+        this.sort = sort;
+        this.name = name;
+        this.author = author;
+        this.sum = sum;
+        this.exists = exists;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public Books() {
     }
 
 

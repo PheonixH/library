@@ -50,16 +50,14 @@ public class AdminServiceImpl implements AdminService {
     public BaseResponse login(Admin admin) {
         BaseResponse baseResponse = null;
         try {
-            Long adminId = adminMapper.login(admin);
-            if (adminId == null) {
+            String adminName = adminMapper.login(admin);
+            if (adminName == null) {
                 baseResponse = new BaseResponse(StatusCodeDesc.LOGIN_FAIL_WRONG_INFORMATION.getCode(),
                         StatusCodeDesc.LOGIN_FAIL_WRONG_INFORMATION.getDesc());
 
                 return baseResponse;
             }
-            adminMapper.insert(admin);
             baseResponse = new BaseResponse(StatusCodeDesc.SUCCESS.getCode(), "登陆成功");
-//            request.getSession().setAttribute("isLogin", "yes");
         } catch (Exception e) {
             e.printStackTrace();
             return new BaseResponse(StatusCodeDesc.INTERNAL_SERVER_ERROR.getCode(),

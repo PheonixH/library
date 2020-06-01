@@ -1,13 +1,16 @@
 package com.example.demo.pojo.entity;
 
 
+import lombok.Data;
+
 import java.io.Serializable;
 
+@Data
 public class Book implements Serializable {
 
     private static final long serialVersionUID = 8655851615465363473L;
 
-    private long id;
+    private Long id;
     private String sort;
     private String name;
     private String author;
@@ -23,7 +26,7 @@ public class Book implements Serializable {
         this.status = 1;
     }
 
-    public Book(long id, String sort, String name, String author) {
+    public Book(Long id, String sort, String name, String author) {
         this.id = id;
         this.sort = sort;
         this.name = name;
@@ -43,50 +46,6 @@ public class Book implements Serializable {
         this.sort = sort;
         this.name = name;
         this.author = author;
-        this.status = status;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-
-    public String getSort() {
-        return sort;
-    }
-
-    public void setSort(String sort) {
-        this.sort = sort;
-    }
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-
-    public long getStatus() {
-        return status;
-    }
-
-    public void setStatus(long status) {
         this.status = status;
     }
 

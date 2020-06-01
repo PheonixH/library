@@ -19,7 +19,7 @@ class BookMapperTest {
     public void testInsert() {
         System.out.println("----------测试插入------");
         Book type = new Book();
-        type.setId(5001);
+        type.setId((long) 5001);
         type.setSort("T1001");
         type.setName("Spring Boot MyBatis 实例讲解");
         type.setAuthor("A");

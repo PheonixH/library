@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.pojo.BaseResponse;
 import com.example.demo.pojo.entity.Admin;
+import com.example.demo.pojo.entity.Reader;
 import com.example.demo.pojo.request.AddBook;
 
 /**
@@ -12,9 +13,11 @@ import com.example.demo.pojo.request.AddBook;
  * @date 2020-05-28 19:58
  */
 
-public interface BookService {
+public interface ManagerService {
 
     BaseResponse queryAllBook();
 
     BaseResponse insertBook(AddBook addBook);
+
+    BaseResponse insertReader(Reader reader);
 }

@@ -4,14 +4,10 @@ import com.example.demo.mapper.AdminMapper;
 import com.example.demo.pojo.BaseResponse;
 import com.example.demo.pojo.StatusCodeDesc;
 import com.example.demo.pojo.entity.Admin;
-import com.example.demo.service.AdminService;
+import com.example.demo.service.LoginService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * @program: demo
@@ -22,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Service
 @Slf4j
-public class AdminServiceImpl implements AdminService {
+public class LoginServiceImpl implements LoginService {
 
     @Autowired
     private AdminMapper adminMapper;

@@ -3,15 +3,15 @@ package com.example.demo.controller;
 import com.example.demo.pojo.BaseResponse;
 import com.example.demo.pojo.StatusCodeDesc;
 import com.example.demo.pojo.entity.Admin;
-import com.example.demo.service.AdminService;
+import com.example.demo.service.LoginService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -26,17 +26,19 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 @Controller
 @RequestMapping("/login")
+@Api(value = "Login controller", tags = {"LoginController"})
 public class LoginController {
 
-
     @Autowired
-    AdminService adminService;
+    LoginService adminService;
 
+    @ApiOperation(value = "return to login page")
     @RequestMapping("/index")
     public String index() {
         return "loginPage";
     }
 
+    @ApiOperation(value = "manager registered")
     @PostMapping(value = "/registered")
     public String registered(@RequestBody Admin admin) {
         BaseResponse baseResponse = adminService.registered(admin);
@@ -47,7 +49,7 @@ public class LoginController {
         }
     }
 
-
+    @ApiOperation(value = "manager login")
     @RequestMapping(value = "/adminLogin")
     public String login(@RequestBody Admin admin, HttpServletResponse response) {
         BaseResponse baseResponse = adminService.login(admin);

@@ -3,7 +3,7 @@ package com.example.demo.pojo;
 public enum StatusCodeDesc {
     SUCCESS(200, "请求成功接收并处理"),
     LOGIN_FAIL_WRONG_INFORMATION(1001,"帐号或密码错误"),
-    NOT_FOUND(404, "请求的资源未找到"),
+    EXISTS(1002, "帐号已存在"),
     INTERNAL_SERVER_ERROR(500, "服务器内部错误，导致无法完成请求的内容");
 
     private int code;

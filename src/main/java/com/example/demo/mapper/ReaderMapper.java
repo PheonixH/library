@@ -37,6 +37,15 @@ public interface ReaderMapper {
     Reader getById(long id);
 
     /**
+     * Gets id by name
+     *
+     * @param id the id
+     * @return the by id
+     */
+    @Select("SELECT ID FROM READER WHERE NAME = #{name}")
+    Reader getId(String name);
+
+    /**
      * Insert.
      *
      * @param reader the reader

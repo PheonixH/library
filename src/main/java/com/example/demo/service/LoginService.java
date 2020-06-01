@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author: lov.moran
  * @date 2020/5/30 下午2:43
  */
-public interface AdminService {
+public interface LoginService {
 
 
     BaseResponse registered(Admin admin);

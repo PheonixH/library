@@ -54,7 +54,7 @@ class BookMapperTest {
     @Test
     public void testDelete() {
         System.out.println("----------测试删除------");
-        bookMapper.delete(5001);
+//        bookMapper.delete(5001);
         testQuery();
     }
 }

@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 
 import com.example.demo.pojo.BaseResponse;
+import com.example.demo.pojo.entity.Book;
 import com.example.demo.pojo.entity.Reader;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -12,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @program: libraryDemo
@@ -54,11 +57,34 @@ public class LibraryManagerController {
         return service.insertBook(addBook);
     }
 
+    @ApiOperation(value = "delete some books")
+    @RequestMapping("/deleteBooks")
+    public BaseResponse deleteBooks(@RequestBody List<Book> bookList) {
+        return service.deleteBook(bookList);
+    }
+
+    @ApiOperation(value = "modify some books, could not modify sort")
+    @RequestMapping("/modifyBooks")
+    public BaseResponse modifyBooks(@RequestBody List<Book> bookList) {
+        return service.modifyBook(bookList);
+    }
+
     @ApiOperation(value = "add a common reader")
     @RequestMapping("/addReader")
     public BaseResponse addReader(@RequestBody Reader reader) {
         return service.insertReader(reader);
     }
 
+    @ApiOperation(value = "delete a common reader")
+    @RequestMapping("/deleteReader")
+    public BaseResponse deleteReader(@RequestBody Reader reader) {
+        return service.deleteReader(reader);
+    }
+
+    @ApiOperation(value = "modify a common reader")
+    @RequestMapping("/modifyReader")
+    public BaseResponse modifyReader(@RequestBody Reader reader) {
+        return service.modifyReader(reader);
+    }
 
 }

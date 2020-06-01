@@ -50,9 +50,9 @@ public interface BookMapper {
     Book getById(long id);
 
     /**
-     * Gets by id.
+     * Gets book id.
      *
-     * @param id the id
+     * @param book the book
      * @return the by id
      */
     @Select("SELECT ID FROM BOOK WHERE NAME = #{name} AND SORT = #{sort} AND AUTHOR = #{author}")
@@ -84,8 +84,8 @@ public interface BookMapper {
     /**
      * Delete.
      *
-     * @param Id the id
+     * @param book the book
      */
     @Delete("DELETE FROM BOOK WHERE ID = #{id}")
-    void delete(long Id);
+    void delete(Book book);
 }

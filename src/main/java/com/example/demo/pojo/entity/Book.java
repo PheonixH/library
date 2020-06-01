@@ -23,6 +23,13 @@ public class Book implements Serializable {
         this.status = 1;
     }
 
+    public Book(long id, String sort, String name, String author) {
+        this.id = id;
+        this.sort = sort;
+        this.name = name;
+        this.author = author;
+    }
+
     public Book(String sort, String name, String author, long status) {
         this.sort = sort;
         this.name = name;

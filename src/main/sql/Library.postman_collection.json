@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3420aec8-a249-41c1-bd12-89b6e78e3aee",
+		"_postman_id": "7cf59423-935b-4028-a1b1-488aa2d10ccd",
 		"name": "Library",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -33,14 +33,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"admin\",\n    \"password\":\"a123456\"\n}",
+							"raw": "{\n    \"name\":\"admin\",\n    \"password\":\"a123\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:8088/admin/registered"
+						"url": "localhost:8088/login/adminLogin"
 					},
 					"response": []
 				}
@@ -55,7 +55,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": ""
+						"url": "localhost:8088/admin/hello"
 					},
 					"response": []
 				},
@@ -64,12 +64,12 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": ""
+						"url": "localhost:8088/admin/showBooks"
 					},
 					"response": []
 				},
 				{
-					"name": "addbook",
+					"name": "add book",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -83,6 +83,96 @@
 							}
 						},
 						"url": "localhost:8088/admin/addBooks"
+					},
+					"response": []
+				},
+				{
+					"name": "modify book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"books\":[\n\t{\n\t\t\"id\": 2008,\n\t\t\"sort\": \"t0011\",\n\t\t\"name\": \"Test\",\n\t\t\"auther\": \"Amily\",\n\t\t\"status\": 1\n\t}\n\t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8088/admin/modifyBooks"
+					},
+					"response": []
+				},
+				{
+					"name": "delete book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"books\":[\n\t{\n\t\t\"id\": 2008,\n\t\t\"sort\": \"t0011\",\n\t\t\"name\": \"Test\",\n\t\t\"auther\": \"Amily\",\n\t\t\"status\": 1\n\t}\n\t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8088/admin/deleteBooks"
+					},
+					"response": []
+				},
+				{
+					"name": "add reader",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"xiao wang\",\n\t\"password\": \"xw123456\",\n\t\"grade\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8088/admin/addReader"
+					},
+					"response": []
+				},
+				{
+					"name": "modify reader",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 4,\n\t\"name\": \"xiao wang\",\n\t\"password\": \"xw123456\",\n\t\"grade\": \"2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8088/admin/modifyReader"
+					},
+					"response": []
+				},
+				{
+					"name": "delete reader",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"xiao wang\",\n\t\"password\": \"xw123456\",\n\t\"grade\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8088/admin/deleteReader"
 					},
 					"response": []
 				}

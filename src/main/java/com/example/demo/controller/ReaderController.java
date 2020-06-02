@@ -1,8 +1,12 @@
 package com.example.demo.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.demo.pojo.BaseResponse;
 import com.example.demo.pojo.entity.Book;
+import com.example.demo.pojo.entity.Reader;
 import com.example.demo.service.ReaderService;
+import com.example.demo.service.TokenService;
+import com.example.demo.util.ReaderToken;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -27,10 +31,34 @@ public class ReaderController {
     @Autowired
     ReaderService readerService;
 
+    @Autowired
+    TokenService tokenService;
+
     @ApiOperation(value = "just a test, return hello")
     @RequestMapping("/hello")
     public String hello() {
         return "hello";
+    }
+
+    @ApiOperation(value = "login")
+    @RequestMapping("/login")
+    public Object login(@RequestBody Reader reader) {
+        JSONObject jsonObject = new JSONObject();
+        Reader userForBase = readerService.findByName(reader);
+        if (userForBase == null) {
+            jsonObject.put("message", "登录失败,用户不存在");
+            return jsonObject;
+        } else {
+            if (!userForBase.getPassword().equals(reader.getPassword())) {
+                jsonObject.put("message", "登录失败,密码错误");
+                return jsonObject;
+            } else {
+                String token = tokenService.getToken(userForBase);
+                jsonObject.put("token", token);
+                jsonObject.put("user", userForBase);
+                return jsonObject;
+            }
+        }
     }
 
     @ApiOperation(value = "query all books")
@@ -63,12 +91,14 @@ public class ReaderController {
         return readerService.queryBooksByStatus((int) book.getStatus());
     }
 
+    @ReaderToken
     @ApiOperation(value = "borrow a book")
     @RequestMapping("/borrowBook")
     public BaseResponse borrow(@RequestBody Book book) {
         return readerService.borrowABook(book);
     }
 
+    @ReaderToken
     @ApiOperation(value = "return a book")
     @RequestMapping("/returnBook")
     public BaseResponse returnBook(@RequestBody Book book) {

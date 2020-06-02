@@ -1,5 +1,7 @@
 package com.example.demo.service.impl;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import com.example.demo.mapper.BookMapper;
 import com.example.demo.mapper.ReaderMapper;
 import com.example.demo.pojo.BaseResponse;
@@ -32,9 +34,10 @@ public class ReaderServiceImpl implements ReaderService {
     @Autowired
     private BookMapper bookMapper;
 
+
     @Override
-    public Reader findById(Reader reader) {
-        return readerMapper.getById(reader.getId());
+    public Reader findById(String readerId) {
+        return readerMapper.getById(Long.valueOf(readerId));
     }
 
     @Override
@@ -207,5 +210,10 @@ public class ReaderServiceImpl implements ReaderService {
         return response;
     }
 
-
+    public String getToken(Reader reader) {
+        String token = "";
+        token = JWT.create().withAudience(reader.getId().toString())
+                .sign(Algorithm.HMAC256(reader.getPassword()));
+        return token;
+    }
 }

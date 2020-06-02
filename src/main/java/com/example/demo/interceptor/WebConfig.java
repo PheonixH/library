@@ -1,5 +1,6 @@
 package com.example.demo.interceptor;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -19,6 +20,9 @@ public class WebConfig implements WebMvcConfigurer {
 //        拦截器用于拦截所有请求
 //        registry.addInterceptor(new LogInterceptor());
 //
+        registry.addInterceptor(authenticationInterceptor())
+                .addPathPatterns("/**");
+
         registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/admin/*");
 //
 //        拦截链接 “/admin/hello”，它将重定向到新的 “/admin/welcome”
@@ -26,5 +30,10 @@ public class WebConfig implements WebMvcConfigurer {
 
 //        拦截链接“/admin/*”，除了链接 “/admin/hello”
 //        registry.addInterceptor(new LogInterceptor()).addPathPatterns("/admin/*").excludePathPatterns("/admin/hello");
+    }
+
+    @Bean
+    public AuthenticationInterceptor authenticationInterceptor() {
+        return new AuthenticationInterceptor();
     }
 }

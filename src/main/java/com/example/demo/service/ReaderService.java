@@ -13,7 +13,7 @@ import com.example.demo.pojo.entity.Reader;
  */
 public interface ReaderService {
 
-    Reader findById(Reader reader);
+    Reader findById(String readerId);
 
     Reader findByName(Reader reader);
 

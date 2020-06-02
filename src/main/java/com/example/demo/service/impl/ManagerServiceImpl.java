@@ -156,7 +156,7 @@ public class ManagerServiceImpl implements ManagerService {
     public BaseResponse insertReader(Reader reader) {
         BaseResponse response = null;
         try {
-            Reader existReader = readerMapper.getId(reader.getName());
+            Reader existReader = readerMapper.getByName(reader.getName());
             if (existReader == null) {
                 readerMapper.insert(reader);
             } else {

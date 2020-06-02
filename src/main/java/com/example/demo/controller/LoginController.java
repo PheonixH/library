@@ -46,9 +46,9 @@ public class LoginController {
     }
 
     @ApiOperation(value = "return login page")
-    @RequestMapping("/login")
+    @RequestMapping("/index")
     public String login() {
-        return "loginPage";
+        return "IndexPage";
     }
 
 
@@ -78,5 +78,14 @@ public class LoginController {
         } else {
             return "loginPage";
         }
+    }
+
+    @RequestMapping(value = "/adminLogout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        Cookie cookie = new Cookie("isLogin", "yes");
+        cookie.setMaxAge(0);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+        return "loginPage";
     }
 }

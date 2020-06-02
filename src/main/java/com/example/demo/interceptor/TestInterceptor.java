@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author: lov.moran
  * @date 2020-05-29 00:37
  */
-public class LogInterceptor extends HandlerInterceptorAdapter {
+public class TestInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

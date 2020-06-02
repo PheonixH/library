@@ -1,8 +1,11 @@
 package com.example.demo.pojo.entity;
 
 
+import lombok.Data;
+
 import java.io.Serializable;
 
+@Data
 public class Admin implements Serializable {
 
     private String name;

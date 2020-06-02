@@ -27,7 +27,7 @@ public interface AdminMapper {
     /**
      * Gets one.
      *
-     * @param id the id
+     * @param name the name
      * @return the all
      */
     @Select("SELECT * FROM ADMIN WHERE NAME = #{name}")

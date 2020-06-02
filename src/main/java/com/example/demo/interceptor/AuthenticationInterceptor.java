@@ -7,8 +7,6 @@ import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.example.demo.pojo.entity.Reader;
 import com.example.demo.service.ReaderService;
-import com.example.demo.util.PassToken;
-import com.example.demo.util.ReaderToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;

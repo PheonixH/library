@@ -6,7 +6,7 @@ import com.example.demo.pojo.entity.Book;
 import com.example.demo.pojo.entity.Reader;
 import com.example.demo.service.ReaderService;
 import com.example.demo.service.TokenService;
-import com.example.demo.util.ReaderToken;
+import com.example.demo.interceptor.ReaderToken;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

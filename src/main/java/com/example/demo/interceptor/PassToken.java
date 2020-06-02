@@ -1,4 +1,4 @@
-package com.example.demo.util;
+package com.example.demo.interceptor;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

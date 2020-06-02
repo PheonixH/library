@@ -50,6 +50,33 @@ public interface BookMapper {
     Book getById(long id);
 
     /**
+     * Gets by name.
+     *
+     * @param name the name
+     * @return the by name
+     */
+    @Select("SELECT * FROM BOOK WHERE NAME = #{name}")
+    List<Book> getByName(String name);
+
+    /**
+     * Gets by author.
+     *
+     * @param author the author
+     * @return the by author
+     */
+    @Select("SELECT * FROM BOOK WHERE AUTHOR = #{author}")
+    List<Book> getByAuthor(String author);
+
+    /**
+     * Gets by status.
+     *
+     * @param status the status
+     * @return the by status
+     */
+    @Select("SELECT * FROM BOOK WHERE STATUS = #{status}")
+    List<Book> getByStatus(int status);
+
+    /**
      * Gets book id.
      *
      * @param book the book

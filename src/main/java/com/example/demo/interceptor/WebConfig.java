@@ -21,7 +21,7 @@ public class WebConfig implements WebMvcConfigurer {
 //        registry.addInterceptor(new LogInterceptor());
 //
         registry.addInterceptor(authenticationInterceptor())
-                .addPathPatterns("/**");
+                .addPathPatterns("/reader/*");
 
         registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/admin/*");
 //
@@ -33,7 +33,7 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public AuthenticationInterceptor authenticationInterceptor() {
-        return new AuthenticationInterceptor();
+    public ReaderAuthenticationInterceptor authenticationInterceptor() {
+        return new ReaderAuthenticationInterceptor();
     }
 }

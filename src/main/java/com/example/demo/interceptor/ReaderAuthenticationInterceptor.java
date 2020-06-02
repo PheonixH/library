@@ -23,7 +23,7 @@ import java.lang.reflect.Method;
  * @author: lov.moran
  * @date 2020-06-02 15:26
  */
-public class AuthenticationInterceptor implements HandlerInterceptor {
+public class ReaderAuthenticationInterceptor implements HandlerInterceptor {
     @Autowired
     ReaderService readerService;
 

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author: lov.moran
  * @date 2020-05-29 01:00
  */
-public class OldLoginInterceptor extends HandlerInterceptorAdapter {
+public class Test2Interceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         long startTime = System.currentTimeMillis();

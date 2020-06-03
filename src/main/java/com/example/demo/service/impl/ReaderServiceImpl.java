@@ -162,14 +162,14 @@ public class ReaderServiceImpl implements ReaderService {
             if (existingBook == null) {
                 response = new BaseResponse(StatusCodeDesc.BOOK_NOT_EXISTS.getCode(),
                         StatusCodeDesc.BOOK_NOT_EXISTS.getDesc());
-            } else if (existingBook.getStatus() == 2) {
+            } else if (existingBook.getStatus() == 1) {
                 response = new BaseResponse(StatusCodeDesc.BOOK_IS_BORROWED.getCode(),
                         StatusCodeDesc.BOOK_IS_BORROWED.getDesc());
-            } else if (existingBook.getStatus() == 3) {
+            } else if (existingBook.getStatus() == 2) {
                 response = new BaseResponse(StatusCodeDesc.BOOK_IS_KEEPING.getCode(),
                         StatusCodeDesc.BOOK_IS_KEEPING.getDesc());
             } else {
-                existingBook.setStatus(2);
+                existingBook.setStatus(1);
                 bookMapper.update(existingBook);
                 response = new BaseResponse(StatusCodeDesc.SUCCESS.getCode(),
                         StatusCodeDesc.SUCCESS.getDesc());
@@ -190,14 +190,14 @@ public class ReaderServiceImpl implements ReaderService {
             if (existingBook == null) {
                 response = new BaseResponse(StatusCodeDesc.BOOK_NOT_EXISTS.getCode(),
                         StatusCodeDesc.BOOK_NOT_EXISTS.getDesc());
-            } else if (existingBook.getStatus() == 1) {
+            } else if (existingBook.getStatus() == 0) {
                 response = new BaseResponse(StatusCodeDesc.BOOK_IS_RETURN.getCode(),
                         StatusCodeDesc.BOOK_IS_RETURN.getDesc());
-            } else if (existingBook.getStatus() == 3) {
+            } else if (existingBook.getStatus() == 2) {
                 response = new BaseResponse(StatusCodeDesc.BOOK_IS_KEEPING.getCode(),
                         StatusCodeDesc.BOOK_IS_KEEPING.getDesc());
             } else {
-                existingBook.setStatus(1);
+                existingBook.setStatus(0);
                 bookMapper.update(existingBook);
                 response = new BaseResponse(StatusCodeDesc.SUCCESS.getCode(),
                         StatusCodeDesc.SUCCESS.getDesc());

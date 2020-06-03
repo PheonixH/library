@@ -57,14 +57,14 @@ public interface BooksMapper {
      *
      * @param books the books
      */
-    @Update("UPDATE BOOKS SET NAME = #{name}, AUTHOR = #{author}, STATUS = #{status} WHERE SORT = #{sort}")
+    @Update("UPDATE BOOKS SET NAME = #{name}, AUTHOR = #{author}, SUM = #{sum}, `EXISTS` = #{exists} WHERE SORT = #{sort}")
     void update(Books books);
 
     /**
      * Delete.
      *
-     * @param Id the id
+     * @param sort the sort
      */
     @Delete("DELETE FROM BOOKS WHERE SORT = #{sort}")
-    void delete(long Id);
+    void delete(String sort);
 }

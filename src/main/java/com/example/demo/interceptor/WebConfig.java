@@ -20,7 +20,7 @@ public class WebConfig implements WebMvcConfigurer {
 //        拦截器用于拦截所有请求
 //        registry.addInterceptor(new LogInterceptor());
 //
-        registry.addInterceptor(authenticationInterceptor())
+        registry.addInterceptor(readerAuthenticationInterceptor())
                 .addPathPatterns("/reader/*");
 
         registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/admin/*");
@@ -33,7 +33,7 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public ReaderAuthenticationInterceptor authenticationInterceptor() {
+    public ReaderAuthenticationInterceptor readerAuthenticationInterceptor() {
         return new ReaderAuthenticationInterceptor();
     }
 }

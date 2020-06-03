@@ -44,7 +44,7 @@ CREATE TABLE `BOOK`
     `SORT`   VARCHAR(20),
     `NAME`   VARCHAR(40),
     `AUTHOR` VARCHAR(40),
--- 状态：1 可借， 2 已借出， 3 保留不可借出
+-- 状态：0 可借， 1 已借出， 2 保留不可借出
     `STATUS` INT(12)
 );
 

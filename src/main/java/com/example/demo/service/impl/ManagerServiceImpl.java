@@ -99,6 +99,10 @@ public class ManagerServiceImpl implements ManagerService {
                     } else {
                         bookMapper.delete(abook);
                         successList.add(abook.getId().toString());
+                        Book stillExistBook = bookMapper.getById(abook.getId());
+                        if(stillExistBook == null){
+                            booksMapper.delete(stillExistBook.getSort());
+                        }
                     }
                 } else {
                     failMap.put(abook.getId().toString(),

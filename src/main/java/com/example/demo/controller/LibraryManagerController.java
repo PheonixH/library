@@ -5,6 +5,7 @@ import com.example.demo.pojo.BaseResponse;
 import com.example.demo.pojo.entity.Book;
 import com.example.demo.pojo.entity.Reader;
 import com.example.demo.pojo.request.BookList;
+import com.example.demo.util.ControllerMonitor;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import com.example.demo.pojo.request.AddBook;
@@ -48,42 +49,49 @@ public class LibraryManagerController {
 
 
     @ApiOperation(value = "show all books")
+    @ControllerMonitor(description = "Manager query all books")
     @RequestMapping("/showBooks")
     public BaseResponse showBooks() {
         return service.queryAllBook();
     }
 
     @ApiOperation(value = "add some books")
+    @ControllerMonitor(description = "Manager add some books")
     @RequestMapping("/addBooks")
     public BaseResponse addBooks(@RequestBody AddBook addBook) {
         return service.insertBook(addBook);
     }
 
     @ApiOperation(value = "delete some books")
+    @ControllerMonitor(description = "Manager delete some books")
     @RequestMapping("/deleteBooks")
     public BaseResponse deleteBooks(@RequestBody BookList bookList) {
         return service.deleteBook(bookList.getBooks());
     }
 
     @ApiOperation(value = "modify some books, could not modify sort")
+    @ControllerMonitor(description = "Manager modify some books")
     @RequestMapping("/modifyBooks")
     public BaseResponse modifyBooks(@RequestBody BookList bookList) {
         return service.modifyBook(bookList.getBooks());
     }
 
     @ApiOperation(value = "add a common reader")
+    @ControllerMonitor(description = "Manager modify add a common reader")
     @RequestMapping("/addReader")
     public BaseResponse addReader(@RequestBody Reader reader) {
         return service.insertReader(reader);
     }
 
     @ApiOperation(value = "delete a common reader")
+    @ControllerMonitor(description = "Manager modify delete a common reader")
     @RequestMapping("/deleteReader")
     public BaseResponse deleteReader(@RequestBody Reader reader) {
         return service.deleteReader(reader);
     }
 
     @ApiOperation(value = "modify a common reader")
+    @ControllerMonitor(description = "Manager modify modify a common reader")
     @RequestMapping("/modifyReader")
     public BaseResponse modifyReader(@RequestBody Reader reader) {
         return service.modifyReader(reader);

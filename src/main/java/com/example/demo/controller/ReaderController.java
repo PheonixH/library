@@ -7,6 +7,7 @@ import com.example.demo.pojo.entity.Reader;
 import com.example.demo.service.ReaderService;
 import com.example.demo.service.TokenService;
 import com.example.demo.interceptor.ReaderToken;
+import com.example.demo.util.ControllerMonitor;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -35,12 +36,14 @@ public class ReaderController {
     TokenService tokenService;
 
     @ApiOperation(value = "just a test, return hello")
+    @ControllerMonitor(description = "Say Hello!")
     @RequestMapping("/hello")
     public String hello() {
         return "hello";
     }
 
     @ApiOperation(value = "login")
+    @ControllerMonitor(description = "Common reader login")
     @RequestMapping("/login")
     public Object login(@RequestBody Reader reader) {
         JSONObject jsonObject = new JSONObject();
@@ -62,30 +65,35 @@ public class ReaderController {
     }
 
     @ApiOperation(value = "query all books")
+    @ControllerMonitor(description = "Common reader query all books")
     @RequestMapping("/queryAllBook")
     public BaseResponse queryAllBooks() {
         return readerService.queryAllBooks();
     }
 
     @ApiOperation(value = "query a book by id")
+    @ControllerMonitor(description = "Common reader query book by ID")
     @RequestMapping("/queryByID")
     public BaseResponse queryByID(@RequestBody Book book) {
         return readerService.queryBookByID(book.getId());
     }
 
     @ApiOperation(value = "query books by name")
+    @ControllerMonitor(description = "Common reader query books by name")
     @RequestMapping("/queryByName")
     public BaseResponse queryByName(@RequestBody Book book) {
         return readerService.queryBooksByName(book.getName());
     }
 
     @ApiOperation(value = "query books by author")
+    @ControllerMonitor(description = "Common reader query books by author")
     @RequestMapping("/queryByAuthor")
     public BaseResponse queryByAuthor(@RequestBody Book book) {
         return readerService.queryBooksByAuthor(book.getAuthor());
     }
 
     @ApiOperation(value = "query books by status")
+    @ControllerMonitor(description = "Common reader query books by status")
     @RequestMapping("/queryByStatus")
     public BaseResponse queryByStatus(@RequestBody Book book) {
         return readerService.queryBooksByStatus((int) book.getStatus());
@@ -93,6 +101,7 @@ public class ReaderController {
 
     @ReaderToken
     @ApiOperation(value = "borrow a book")
+    @ControllerMonitor(description = "Common reader borrow a book")
     @RequestMapping("/borrowBook")
     public BaseResponse borrow(@RequestBody Book book) {
         return readerService.borrowABook(book);
@@ -100,6 +109,7 @@ public class ReaderController {
 
     @ReaderToken
     @ApiOperation(value = "return a book")
+    @ControllerMonitor(description = "Common reader return a book")
     @RequestMapping("/returnBook")
     public BaseResponse returnBook(@RequestBody Book book) {
         return readerService.returnABook(book);

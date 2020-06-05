@@ -5,6 +5,7 @@ import com.example.demo.pojo.StatusCodeDesc;
 import com.example.demo.pojo.entity.Admin;
 import com.example.demo.service.LoginService;
 import com.example.demo.service.impl.LoginServiceImpl;
+import com.example.demo.util.ControllerMonitor;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -53,6 +54,7 @@ public class LoginController {
 
 
     @ApiOperation(value = "manager registered")
+    @ControllerMonitor(description = "Manager regist")
     @PostMapping(value = "/registered")
     public String registered(@RequestBody Admin admin) {
         admin.setPassword(LoginServiceImpl.encryptBasedDes(admin.getPassword()));
@@ -65,6 +67,7 @@ public class LoginController {
     }
 
     @ApiOperation(value = "manager login")
+    @ControllerMonitor(description = "Manager login")
     @RequestMapping(value = "/adminLogin")
     public String login(@RequestBody Admin admin, HttpServletResponse response) {
         BaseResponse baseResponse = adminService.login(admin);
@@ -81,6 +84,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/adminLogout")
+    @ControllerMonitor(description = "Manager logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         Cookie cookie = new Cookie("isLogin", "yes");
         cookie.setMaxAge(0);

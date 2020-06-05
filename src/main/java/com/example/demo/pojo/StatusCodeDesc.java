@@ -1,5 +1,12 @@
 package com.example.demo.pojo;
 
+/**
+ * @program: demo
+ * @className: AdminMapper
+ * @description: admin mapper
+ * @author: lov.moran
+ * @date 2020/5/30 下午1:19
+ */
 public enum StatusCodeDesc {
     SUCCESS(200, "操作成功"),
     LOGIN_FAIL_WRONG_INFORMATION(1001,"帐号或密码错误"),

@@ -158,21 +158,26 @@ public class ReaderServiceImpl implements ReaderService {
     public BaseResponse borrowABook(Book book) {
         BaseResponse response = null;
         try {
-            Book existingBook = bookMapper.getById(book.getId());
-            if (existingBook == null) {
-                response = new BaseResponse(StatusCodeDesc.BOOK_NOT_EXISTS.getCode(),
-                        StatusCodeDesc.BOOK_NOT_EXISTS.getDesc());
-            } else if (existingBook.getStatus() == 1) {
-                response = new BaseResponse(StatusCodeDesc.BOOK_IS_BORROWED.getCode(),
-                        StatusCodeDesc.BOOK_IS_BORROWED.getDesc());
-            } else if (existingBook.getStatus() == 2) {
-                response = new BaseResponse(StatusCodeDesc.BOOK_IS_KEEPING.getCode(),
-                        StatusCodeDesc.BOOK_IS_KEEPING.getDesc());
+            if (book.getId() != null) {
+                Book existingBook = bookMapper.getById(book.getId());
+                if (existingBook == null) {
+                    response = new BaseResponse(StatusCodeDesc.BOOK_NOT_EXISTS.getCode(),
+                            StatusCodeDesc.BOOK_NOT_EXISTS.getDesc());
+                } else if (existingBook.getStatus() == 1) {
+                    response = new BaseResponse(StatusCodeDesc.BOOK_IS_BORROWED.getCode(),
+                            StatusCodeDesc.BOOK_IS_BORROWED.getDesc());
+                } else if (existingBook.getStatus() == 2) {
+                    response = new BaseResponse(StatusCodeDesc.BOOK_IS_KEEPING.getCode(),
+                            StatusCodeDesc.BOOK_IS_KEEPING.getDesc());
+                } else {
+                    existingBook.setStatus(1);
+                    bookMapper.update(existingBook);
+                    response = new BaseResponse(StatusCodeDesc.SUCCESS.getCode(),
+                            StatusCodeDesc.SUCCESS.getDesc());
+                }
             } else {
-                existingBook.setStatus(1);
-                bookMapper.update(existingBook);
-                response = new BaseResponse(StatusCodeDesc.SUCCESS.getCode(),
-                        StatusCodeDesc.SUCCESS.getDesc());
+                response = new BaseResponse(StatusCodeDesc.BOOK_ID_NOT_EXISTS.getCode(),
+                        StatusCodeDesc.BOOK_ID_NOT_EXISTS.getDesc());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -186,21 +191,26 @@ public class ReaderServiceImpl implements ReaderService {
     public BaseResponse returnABook(Book book) {
         BaseResponse response = null;
         try {
-            Book existingBook = bookMapper.getById(book.getId());
-            if (existingBook == null) {
-                response = new BaseResponse(StatusCodeDesc.BOOK_NOT_EXISTS.getCode(),
-                        StatusCodeDesc.BOOK_NOT_EXISTS.getDesc());
-            } else if (existingBook.getStatus() == 0) {
-                response = new BaseResponse(StatusCodeDesc.BOOK_IS_RETURN.getCode(),
-                        StatusCodeDesc.BOOK_IS_RETURN.getDesc());
-            } else if (existingBook.getStatus() == 2) {
-                response = new BaseResponse(StatusCodeDesc.BOOK_IS_KEEPING.getCode(),
-                        StatusCodeDesc.BOOK_IS_KEEPING.getDesc());
+            if (book.getId() != null) {
+                Book existingBook = bookMapper.getById(book.getId());
+                if (existingBook == null) {
+                    response = new BaseResponse(StatusCodeDesc.BOOK_NOT_EXISTS.getCode(),
+                            StatusCodeDesc.BOOK_NOT_EXISTS.getDesc());
+                } else if (existingBook.getStatus() == 0) {
+                    response = new BaseResponse(StatusCodeDesc.BOOK_IS_RETURN.getCode(),
+                            StatusCodeDesc.BOOK_IS_RETURN.getDesc());
+                } else if (existingBook.getStatus() == 2) {
+                    response = new BaseResponse(StatusCodeDesc.BOOK_IS_KEEPING.getCode(),
+                            StatusCodeDesc.BOOK_IS_KEEPING.getDesc());
+                } else {
+                    existingBook.setStatus(0);
+                    bookMapper.update(existingBook);
+                    response = new BaseResponse(StatusCodeDesc.SUCCESS.getCode(),
+                            StatusCodeDesc.SUCCESS.getDesc());
+                }
             } else {
-                existingBook.setStatus(0);
-                bookMapper.update(existingBook);
-                response = new BaseResponse(StatusCodeDesc.SUCCESS.getCode(),
-                        StatusCodeDesc.SUCCESS.getDesc());
+                response = new BaseResponse(StatusCodeDesc.BOOK_ID_NOT_EXISTS.getCode(),
+                        StatusCodeDesc.BOOK_ID_NOT_EXISTS.getDesc());
             }
         } catch (Exception e) {
             e.printStackTrace();

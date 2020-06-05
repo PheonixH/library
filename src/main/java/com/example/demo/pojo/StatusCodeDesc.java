@@ -6,6 +6,7 @@ public enum StatusCodeDesc {
     ACCOUNT_EXISTS(1002, "帐号已存在"),
     ACCOUNT_NOT_EXISTS(1003, "帐号不存在"),
     ACCOUNT_ID_NOT_EXISTS(1004, "帐号ID缺失"),
+    ACCOUNT_TOKEN_INVALID(1005, "帐号认证失败"),
     BOOK_NOT_EXISTS(2001, "书籍不存在"),
     BOOK_ID_NOT_EXISTS(2002, "书籍ID缺失"),
     BOOK_IS_BORROWED(2003,"书籍已经借出"),

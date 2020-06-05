@@ -77,10 +77,10 @@ public class SystemLogAspect {
             sb.append("RequestType   :  ").append(request.getMethod()).append("\n");
             sb.append("Description   :  ").append(methodDescription).append("\n");
             sb.append("serverAddr    :  ").append(request.getScheme()).append("://").append(request.getServerName()).append(":").append(request.getServerPort()).append("\n");
-            sb.append("RemoteAddr    :  ").append(IpUtils.getRemoteAddr(request)).append("\n");
-            UserAgent userAgent = UserAgentUtils.getUserAgent(request);
-            sb.append("DeviceName    :  ").append(userAgent.getOperatingSystem().getName()).append("\n");
-            sb.append("BrowserName   :  ").append(userAgent.getBrowser().getName()).append("\n");
+//            sb.append("RemoteAddr    :  ").append(IpUtils.getRemoteAddr(request)).append("\n");
+//            UserAgent userAgent = UserAgentUtils.getUserAgent(request);
+//            sb.append("DeviceName    :  ").append(userAgent.getOperatingSystem().getName()).append("\n");
+//            sb.append("BrowserName   :  ").append(userAgent.getBrowser().getName()).append("\n");
             sb.append("UserAgent     :  ").append(request.getHeader("User-Agent")).append("\n");
             sb.append("RequestUri    :  ").append(StringUtils.abbr(request.getRequestURI(), 255)).append("\n");
             logger.info(sb.toString());

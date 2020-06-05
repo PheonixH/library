@@ -84,7 +84,7 @@
         <dependency>
             <groupId>repository.io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
-            <version>1.5.20</version>
+            <version>1.5.13</version>
         </dependency>
         <!-- @Api 注解-->
 
@@ -95,6 +95,25 @@
             <version>3.4.0</version>
         </dependency>
         <!-- token 生成-->
+
+        <!-- 日志 -->
+        <!-- 引入aop-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>repository.org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.9</version>
+        </dependency>
+        <dependency>
+            <groupId>repository.repository.eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+            <version>1.21</version>
+        </dependency>
+        <!-- 日志 -->
+
 
     </dependencies>
 

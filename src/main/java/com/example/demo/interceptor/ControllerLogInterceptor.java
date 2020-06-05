@@ -13,14 +13,14 @@ import javax.servlet.http.HttpServletResponse;
  * @author: lov.moran
  * @date 2020-05-29 00:37
  */
-public class TestInterceptor extends HandlerInterceptorAdapter {
+public class ControllerLogInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         long startTime = System.currentTimeMillis();
         System.out.println("\n-------- LogInterception.preHandle --- ");
-        System.out.println("Request URL: " + request.getRequestURL());
-        System.out.println("Start Time:" + startTime);
+//        System.out.println("Request URL: " + request.getRequestURL());
+//        System.out.println("Start Time:" + startTime);
         request.setAttribute("startTime", startTime);
         return true;
     }
@@ -28,7 +28,7 @@ public class TestInterceptor extends HandlerInterceptorAdapter {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         System.out.println("\n-------- LogInterception.postHandle --- ");
-        System.out.println("Request URL: " + request.getRequestURL());
+//        System.out.println("Request URL: " + request.getRequestURL());
     }
 
     @Override
@@ -39,6 +39,7 @@ public class TestInterceptor extends HandlerInterceptorAdapter {
         System.out.println("Request URL: " + request.getRequestURL());
         System.out.println("End Time: " + endTime);
         System.out.println("Time Taken: " + (endTime - startTime));
+
     }
 
 }

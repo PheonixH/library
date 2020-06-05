@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 public interface LoginService {
 
-
     BaseResponse registered(Admin admin);
 
     BaseResponse login(Admin admin);

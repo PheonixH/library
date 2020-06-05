@@ -5,6 +5,8 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.example.demo.pojo.BaseResponse;
+import com.example.demo.pojo.StatusCodeDesc;
 import com.example.demo.pojo.entity.Reader;
 import com.example.demo.service.ReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +51,7 @@ public class ReaderAuthenticationInterceptor implements HandlerInterceptor {
                 try {
                     userId = JWT.decode(token).getAudience().get(0);
                 } catch (JWTDecodeException j) {
-                    throw new RuntimeException("401");
+                    throw new RuntimeException(StatusCodeDesc.ACCOUNT_ID_NOT_EXISTS.getDesc());
                 }
                 Reader user = readerService.findById(userId);
                 if (user == null) {
@@ -60,7 +62,7 @@ public class ReaderAuthenticationInterceptor implements HandlerInterceptor {
                 try {
                     jwtVerifier.verify(token);
                 } catch (JWTVerificationException e) {
-                    throw new RuntimeException("401");
+                    throw new RuntimeException(StatusCodeDesc.ACCOUNT_TOKEN_INVALID.getDesc());
                 }
                 //检查是否有InjectToken注释，有则注入用户
                 if (method.isAnnotationPresent(InjectToken.class)) {
